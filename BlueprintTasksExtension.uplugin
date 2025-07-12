@@ -1,0 +1,59 @@
+﻿{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "BP Tasks Extension",
+	"Description": "Varian",
+	"Category": "Other",
+	"CreatedBy": "",
+	"CreatedByURL": "Extension of BlueprintTasks and a collection of useful generic nodes",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "BlueprintTasksExtension",
+			"Type": "Runtime",
+			"LoadingPhase": "PreLoadingScreen"
+		},
+		{
+			"Name": "BT_Dialogue",
+			"Type": "Runtime",
+			"LoadingPhase": "PreLoadingScreen"
+		},
+		{
+			"Name": "BT_Quests",
+			"Type": "Runtime",
+			"LoadingPhase": "PreLoadingScreen"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "BlueprintNodeTemplate",
+			"Enabled": true
+		},
+		{
+			"Name": "GameFeatures",
+			"Enabled": true
+		},
+		{
+			"Name": "Cog",
+			"Enabled": true,
+			"Optional": true
+		}
+	,
+		{
+			"Name": "TagFacts",
+			"Enabled": true,
+			"Optional": true
+		},
+		{
+			"Name": "HermesCommunications",
+			"Enabled": true,
+			"Optional": true
+		}
+	]
+}
