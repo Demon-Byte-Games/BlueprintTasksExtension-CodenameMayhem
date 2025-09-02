@@ -11,7 +11,7 @@ public class BT_Dialogue : ModuleRules
             new string[]
             {
                 "Core", 
-                "BlueprintNodeTemplate",
+                "BlueprintTaskForge",
                 "GameplayTags"
             }
         );

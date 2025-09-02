@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "NodeDecorators/BNTNodeDecorator.h"
+#include "NodeDecorators/BtfNodeDecorator.h"
 #include "QuestTaskDecorator.generated.h"
 
 class UQuestAsset;
@@ -11,7 +11,7 @@ class UQuestAsset;
  * 
  */
 UCLASS()
-class BT_QUESTS_API UQuestTaskDecorator : public UBNTNodeDecorator
+class BT_QUESTS_API UQuestTaskDecorator : public UBtf_NodeDecorator
 {
 	GENERATED_BODY()
 	
@@ -20,7 +20,7 @@ class BT_QUESTS_API UQuestTaskDecorator : public UBNTNodeDecorator
 	
 	TWeakObjectPtr<UQuestAsset> QuestInformation = nullptr;
 
-	virtual TSharedRef<SWidget> CreateCenterContent(UClass* TaskClass, UBlueprintTaskTemplate* BlueprintTaskNode, UEdGraphNode* GraphNode) override;
+	virtual TSharedRef<SWidget> CreateCenterContent(UClass* TaskClass, UBtf_TaskForge* BlueprintTaskNode, UEdGraphNode* GraphNode) override;
 
-	virtual TArray<UObject*> GetObjectsForExtraDetailsPanels() const override;
+	virtual TArray<UObject*> Get_ObjectsForExtraDetailsPanels() const override;
 };

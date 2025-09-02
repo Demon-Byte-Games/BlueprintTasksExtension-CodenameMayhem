@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BlueprintTaskTemplate.h"
+#include "BtfTaskForge.h"
 #include "GameplayTagContainer.h"
 #include "Engine/CancellableAsyncAction.h"
 
@@ -54,7 +54,7 @@ public:
 		/**Deactivate all tasks and cancel all async actions*/
 		for(auto& CurrentObject : SubObjects)
 		{
-			if(UBlueprintTaskTemplate* TaskTemplate = Cast<UBlueprintTaskTemplate>(CurrentObject))
+			if(UBtf_TaskForge* TaskTemplate = Cast<UBtf_TaskForge>(CurrentObject))
 			{
 				TaskTemplate->Deactivate();
 			}

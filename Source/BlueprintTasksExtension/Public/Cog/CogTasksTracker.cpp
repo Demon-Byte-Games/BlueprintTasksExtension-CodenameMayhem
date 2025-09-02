@@ -1,8 +1,7 @@
 ﻿#include "CogTasksTracker.h"
 
-#include "BlueprintTaskTemplate.h"
 #include "Nodes/TaskGraphNode/TaskGraph.h"
-#include "Subsystem/BlueprintTaskTrackerSubsystem.h"
+#include "Subsystem/BtfSubsystem.h"
 
 #if COG_INSTALLED && ENABLE_COG
 
@@ -15,7 +14,7 @@ void FCogTasksTracker::RenderHelp()
 
 void FCogTasksTracker::RenderContent()
 {
-	UBlueprintTaskTrackerSubsystem* TrackerSubsystem = GEngine->GetEngineSubsystem<UBlueprintTaskTrackerSubsystem>();
+	UBtf_WorldSubsystem* TrackerSubsystem = GetWorld()->GetSubsystem<UBtf_WorldSubsystem>();
 	if(!TrackerSubsystem)
 	{
 		return;
@@ -23,7 +22,7 @@ void FCogTasksTracker::RenderContent()
 
 	HandledObjects.Empty();
 
-	for(auto& CurrentObject : TrackerSubsystem->ObjectsAndTheirTasks)
+	for(auto& CurrentObject : TrackerSubsystem->GetTaskTree())
 	{
 		if(CurrentObject.Key.IsValid())
 		{
@@ -46,9 +45,9 @@ void FCogTasksTracker::RenderContent()
 				GetObjectsWithOuter(Outer, Children, false);
 				for(auto& CurrentChild : Children)
 				{
-					if(CurrentChild->IsA(UBlueprintTaskTemplate::StaticClass())
+					if(CurrentChild->IsA(UBtf_TaskForge::StaticClass())
 						|| CurrentChild->IsA(UTaskGraph::StaticClass())
-						|| TrackerSubsystem->ObjectsAndTheirTasks.Contains(Outer)
+						|| TrackerSubsystem->GetTaskTree().Contains(Outer)
 						&& CurrentChild != CurrentObject.Key.Get())
 					{
 						TargetObject = Outer;
@@ -75,7 +74,7 @@ void FCogTasksTracker::RenderObjectTree(UObject* Object)
 
 	HandledObjects.Add(Object);
 
-	if(UBlueprintTaskTemplate* TaskObject = Cast<UBlueprintTaskTemplate>(Object))
+	if(UBtf_TaskForge* TaskObject = Cast<UBtf_TaskForge>(Object))
 	{
 		if(!TaskObject->Get_IsActive())
 		{
@@ -105,7 +104,7 @@ void FCogTasksTracker::RenderObjectTree(UObject* Object)
 				continue;
 			}
 			
-			if(Child->IsA(UBlueprintTaskTemplate::StaticClass())
+			if(Child->IsA(UBtf_TaskForge::StaticClass())
 				|| Child->IsA(UTaskGraph::StaticClass()))
 			{
 				RenderObjectTree(Child);
@@ -116,7 +115,7 @@ void FCogTasksTracker::RenderObjectTree(UObject* Object)
 			GetObjectsWithOuter(Child, TempChildren, false);
 			for(auto& CurrentTempChild : TempChildren)
 			{
-				if(CurrentTempChild->IsA(UBlueprintTaskTemplate::StaticClass())
+				if(CurrentTempChild->IsA(UBtf_TaskForge::StaticClass())
 					|| CurrentTempChild->IsA(UTaskGraph::StaticClass()))
 				{
 					RenderObjectTree(Child);

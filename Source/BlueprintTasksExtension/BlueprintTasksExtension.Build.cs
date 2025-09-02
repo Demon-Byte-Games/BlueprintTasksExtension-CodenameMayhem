@@ -30,7 +30,7 @@ public class BlueprintTasksExtension : ModuleRules
 			new string[]
 			{
 				"Core", 
-				"BlueprintNodeTemplate",
+				"BlueprintTaskForge",
 				"GameplayTags", 
 				"GameFeatures",
 				// ... add other public dependencies that you statically link with here ...
@@ -51,7 +51,7 @@ public class BlueprintTasksExtension : ModuleRules
 		
 		if (Target.bBuildEditor)
 		{
-			PrivateDependencyModuleNames.Add("BlueprintNodeTemplateEditor");
+			PrivateDependencyModuleNames.Add("BlueprintTaskForgeEditor");
 		}
 		
 		//Check if the Cog plugin exists
@@ -64,10 +64,10 @@ public class BlueprintTasksExtension : ModuleRules
 			{
 				PublicDependencyModuleNames.AddRange(new string[]
 				{
+					"Cog",
 					"CogDebug",
 					"CogEngine",
 					"CogImgui",
-					"CogWindow",
 				});
 			}
 		}

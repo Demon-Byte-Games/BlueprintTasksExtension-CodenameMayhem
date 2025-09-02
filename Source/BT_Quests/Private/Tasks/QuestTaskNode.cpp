@@ -21,9 +21,9 @@ UQuestTaskNode::UQuestTaskNode(const FObjectInitializer& ObjectInitializer) : Su
 	{
 		RefreshCollected();
 		//By default, these will always appear
-		SpawnParam.Add(FNameSelect("QuestAsset"));
-		OutDelegate.Add(FNameSelect("QuestAccepted"));
-		OutDelegate.Add(FNameSelect("QuestCompleted"));
+		SpawnParam.Add(FBtf_NameSelect("QuestAsset"));
+		OutDelegate.Add(FBtf_NameSelect("QuestAccepted"));
+		OutDelegate.Add(FBtf_NameSelect("QuestCompleted"));
 		ExecFunction.Empty();
 	}
 
@@ -78,7 +78,7 @@ void UQuestTaskNode::Activate_Internal()
 	
 }
 
-bool UQuestTaskNode::GetNodeTitleColor_Implementation(FLinearColor& Color)
+bool UQuestTaskNode::Get_NodeTitleColor_Implementation(FLinearColor& Color)
 {
 	Color = FLinearColor(FColor(243, 100, 0));
 	return true;
