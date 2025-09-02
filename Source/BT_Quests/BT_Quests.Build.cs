@@ -11,7 +11,7 @@ public class BT_Quests : ModuleRules
             new string[]
             {
                 "Core", 
-                "BlueprintNodeTemplate",
+                "BlueprintTaskForge",
                 "GameplayTags"
             }
         );
@@ -61,10 +61,10 @@ public class BT_Quests : ModuleRules
             {
                 PublicDependencyModuleNames.AddRange(new string[]
                 {
+                    "Cog",
                     "CogDebug",
                     "CogEngine",
                     "CogImgui",
-                    "CogWindow",
                 });
             }
         }

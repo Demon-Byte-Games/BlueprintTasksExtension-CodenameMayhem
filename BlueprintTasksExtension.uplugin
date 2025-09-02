@@ -32,7 +32,7 @@
 	],
 	"Plugins": [
 		{
-			"Name": "BlueprintNodeTemplate",
+			"Name": "BlueprintTaskForge",
 			"Enabled": true
 		},
 		{

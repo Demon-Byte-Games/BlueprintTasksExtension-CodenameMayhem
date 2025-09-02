@@ -3,8 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BlueprintTaskTemplate.h"
-#include "GameplayTagContainer.h"
+#include "BtfTaskForge.h"
 #include "DataAssets/QuestAsset.h"
 
 #include "QuestTaskNode.generated.h"
@@ -25,7 +24,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnQuestObjectiveStageCompleted, FQ
  * A node responsible for starting and tracking a quest.
  */
 UCLASS()
-class BT_QUESTS_API UQuestTaskNode : public UBlueprintTaskTemplate
+class BT_QUESTS_API UQuestTaskNode : public UBtf_TaskForge
 {
 	GENERATED_BODY()
 
@@ -70,7 +69,7 @@ public:
 	UPROPERTY(BlueprintCallable, BlueprintAssignable)
 	FOnQuestObjectiveStageCompleted QuestObjectiveStageCompleted;
 
-	virtual bool GetNodeTitleColor_Implementation(FLinearColor& Color) override;
+	virtual bool Get_NodeTitleColor_Implementation(FLinearColor& Color) override;
 
 	UFUNCTION()
 	void OnQuestCompleted(FBTQuestWrapper Quest)

@@ -3,10 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BlueprintTaskTemplate.h"
 #include "DialogueTask.h"
 #include "DataAssets/DialogueCharacter.h"
-#include "NodeDecorators/BNTNodeDecorator.h"
+#include "NodeDecorators/BtfNodeDecorator.h"
 
 #include "DialogueTaskDecorator.generated.h"
 
@@ -14,7 +13,7 @@
  * 
  */
 UCLASS()
-class BT_DIALOGUE_API UDialogueTaskDecorator : public UBNTNodeDecorator
+class BT_DIALOGUE_API UDialogueTaskDecorator : public UBtf_NodeDecorator
 {
 	GENERATED_BODY()
 
@@ -28,7 +27,7 @@ class BT_DIALOGUE_API UDialogueTaskDecorator : public UBNTNodeDecorator
 		Super::BeginDestroy();
 	}
 
-	virtual TSharedRef<SWidget> CreateTopContent(UClass* TaskClass, UBlueprintTaskTemplate* BlueprintTaskNode, UEdGraphNode* GraphNode) override
+	virtual TSharedRef<SWidget> CreateTopContent(UClass* TaskClass, UBtf_TaskForge* BlueprintTaskNode, UEdGraphNode* GraphNode) override
 	{
 		if(!Cast<UDialogueTask>(BlueprintTaskNode)->Script.Character.IsNull())
 		{
@@ -39,7 +38,7 @@ class BT_DIALOGUE_API UDialogueTaskDecorator : public UBNTNodeDecorator
 		return Super::CreateTopContent(TaskClass, BlueprintTaskNode, GraphNode);
 	}
 
-	virtual TSharedRef<SWidget> CreateCenterContent(UClass* TaskClass, UBlueprintTaskTemplate* BlueprintTaskNode, UEdGraphNode* GraphNode) override
+	virtual TSharedRef<SWidget> CreateCenterContent(UClass* TaskClass, UBtf_TaskForge* BlueprintTaskNode, UEdGraphNode* GraphNode) override
 	{
 		Portrait = Cast<UDialogueTask>(BlueprintTaskNode)->GetSpeakerPortrait();
 		if(Portrait)

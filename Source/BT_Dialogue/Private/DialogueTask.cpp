@@ -15,8 +15,6 @@ UDialogueTask::UDialogueTask(const FObjectInitializer& ObjectInitializer) : Supe
 	MenuDisplayName = "Dialogue Task";
 	Tooltip = "A task that displays a dialogue box.";
 
-	TickFunc.bStartWithTickEnabled = false;
-
 	if(HasAnyFlags(RF_ClassDefaultObject))
 	{
 		ExecFunction.Empty();
@@ -27,7 +25,7 @@ UDialogueTask::UDialogueTask(const FObjectInitializer& ObjectInitializer) : Supe
 #endif
 }
 
-bool UDialogueTask::GetNodeTitleColor_Implementation(FLinearColor& Color)
+bool UDialogueTask::Get_NodeTitleColor_Implementation(FLinearColor& Color)
 {
 	Color = FLinearColor::Green;
 	return true;
@@ -48,7 +46,7 @@ UTexture2D* UDialogueTask::GetSpeakerPortrait()
 	return Cast<UTexture2D>(Script.Character->CharacterPortrait.LoadSynchronous());
 }
 
-TArray<FCustomOutputPin> UDialogueTask::GetCustomOutputPins_Implementation()
+TArray<FCustomOutputPin> UDialogueTask::Get_CustomOutputPins_Implementation() const
 {
 	TArray<FCustomOutputPin> Output;
 

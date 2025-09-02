@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BlueprintTaskTemplate.h"
+#include "BtfTaskForge.h"
 #include "GameplayTagContainer.h"
 
 #include "DialogueTask.generated.h"
@@ -140,7 +140,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDialogueFinished);
  * Your widget must have a delegate that will execute SelectDialogueOption.
  */
 UCLASS(Abstract, AutoExpandCategories = ("Dialogue"), meta=(ContextMenuCategory = "Varian's Plugins", ContextMenuEntryName = "Dialogue|Task", ContextMenuPrefix = "DLT_"))
-class BT_DIALOGUE_API UDialogueTask : public UBlueprintTaskTemplate
+class BT_DIALOGUE_API UDialogueTask : public UBtf_TaskForge
 {
 	GENERATED_BODY()
 
@@ -160,7 +160,7 @@ public:
 	UPROPERTY(Category = "Dialogue", EditAnywhere, BlueprintReadWrite)
 	bool RemoveDialogueScreenOnDeactivate = false;
 
-	virtual bool GetNodeTitleColor_Implementation(FLinearColor& Color) override;
+	virtual bool Get_NodeTitleColor_Implementation(FLinearColor& Color) override;
 
 	UFUNCTION(BlueprintNativeEvent)
 	FString GetCenterText();
@@ -168,7 +168,7 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	UTexture2D* GetSpeakerPortrait();
 
-	virtual TArray<FCustomOutputPin> GetCustomOutputPins_Implementation() override;
+	virtual TArray<FCustomOutputPin> Get_CustomOutputPins_Implementation() const override;
 
 	UFUNCTION(BlueprintCallable)
 	void SelectDialogueOption(FDialogueTaskOption Option);

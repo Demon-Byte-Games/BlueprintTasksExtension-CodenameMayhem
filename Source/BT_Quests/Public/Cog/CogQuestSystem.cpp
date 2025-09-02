@@ -2,7 +2,7 @@
 
 #if COG_INSTALLED && ENABLE_COG
 
-#include "CogWindowWidgets.h"
+#include "CogWidgets.h"
 #include "QuestSystem.h"
 #include "DataAssets/QuestAsset.h"
 #include "DataAssets/QuestChain.h"
@@ -125,16 +125,16 @@ void FCogQuestSystem::RenderContent()
 		ImGui::Separator();
 		ImGui::Text("Non-Active quests");
 		ImGui::SameLine();
-		ImGui::SetCursorPosX(ImGui::GetCursorPosX() - FCogWindowWidgets::GetFontWidth() * 3.0f);
+		ImGui::SetCursorPosX(ImGui::GetCursorPosX() - FCogWidgets::GetFontWidth() * 3.0f);
 		ImGui::TextDisabled("(?)");
 		if (ImGui::IsItemHovered())
 		{
 			ImGui::PushStyleColor(ImGuiCol_PopupBg, IM_COL32(29, 42, 62, 240));
-			const float HelpWidth = FCogWindowWidgets::GetFontWidth() * 80;
+			const float HelpWidth = FCogWidgets::GetFontWidth() * 80;
 			ImGui::SetNextWindowSizeConstraints(ImVec2(HelpWidth / 2.0f, 0.0f), ImVec2(HelpWidth, FLT_MAX));
 			if (ImGui::BeginTooltip())
 			{
-				ImGui::PushTextWrapPos(HelpWidth - 1 * FCogWindowWidgets::GetFontWidth());
+				ImGui::PushTextWrapPos(HelpWidth - 1 * FCogWidgets::GetFontWidth());
 				ImGui::Text("Accepting any of these quests will instantly"
 				   "load the quest and all related assets.");
 				ImGui::PopTextWrapPos();
@@ -143,7 +143,7 @@ void FCogQuestSystem::RenderContent()
 			ImGui::PopStyleColor();
 		}
 		ImGui::SameLine();
-		ImGui::Dummy(ImVec2(FCogWindowWidgets::GetFontWidth() * 1, 0));
+		ImGui::Dummy(ImVec2(FCogWidgets::GetFontWidth() * 1, 0));
 		// Get the Asset Registry
 		UAssetManager& AssetManager = UAssetManager::Get();
 
