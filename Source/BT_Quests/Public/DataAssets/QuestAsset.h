@@ -151,7 +151,7 @@ struct FBTQuestWrapper
 /**
  * An asset that stores all data revolving a quest
  */
-UCLASS(Abstract)
+UCLASS()
 class BT_QUESTS_API UQuestAsset : public UPrimaryDataAsset, public II_AssetDetails
 {
 	GENERATED_BODY()
@@ -194,11 +194,6 @@ public:
 	virtual FPrimaryAssetId GetPrimaryAssetId() const override;
 	
 	virtual void GetAssetRegistryTags(FAssetRegistryTagsContext Context) const override;
-	
-	virtual FLinearColor GetAssetColor_Implementation() const override
-	{
-		return OmniToolbox::BlueprintAssetColor;
-	}
 
 	virtual bool AppearsInContextMenu_Implementation() const override
 	{

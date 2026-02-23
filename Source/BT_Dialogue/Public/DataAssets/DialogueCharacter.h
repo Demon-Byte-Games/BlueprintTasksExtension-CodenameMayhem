@@ -10,7 +10,7 @@
 /**
  * 
  */
-UCLASS(Abstract)
+UCLASS()
 class BT_DIALOGUE_API UDialogueCharacter : public UPrimaryDataAsset, public II_AssetDetails
 {
 	GENERATED_BODY()
@@ -35,11 +35,6 @@ public:
 	FLinearColor NodeColor;
 	
 #endif
-	
-	virtual FLinearColor GetAssetColor_Implementation() const override
-	{
-		return OmniToolbox::BlueprintAssetColor;
-	}
 
 	virtual bool AppearsInContextMenu_Implementation() const override
 	{

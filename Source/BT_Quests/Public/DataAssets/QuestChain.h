@@ -21,7 +21,7 @@ struct FBTQuestChainStage
 /**
  * An asset that manages a set of quests, creating a "quest chain"
  */
-UCLASS(Abstract)
+UCLASS()
 class BT_QUESTS_API UQuestChain : public UPrimaryDataAsset, public II_AssetDetails
 {
 	GENERATED_BODY()
@@ -43,11 +43,6 @@ public:
 	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
 	
 #endif
-	
-	virtual FLinearColor GetAssetColor_Implementation() const override
-	{
-		return OmniToolbox::BlueprintAssetColor;
-	}
 
 	virtual bool AppearsInContextMenu_Implementation() const override
 	{
